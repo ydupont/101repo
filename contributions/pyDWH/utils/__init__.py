@@ -83,8 +83,7 @@ def get_age(dob, current_date):
         bday = dob.replace(year=current_date.year)
     except ValueError:
         # This happens if dob falls on 29th Feb and the current year is
-        # not a leap year.
-        bday = dob.replace(day=dob.day - 1)
+        bday = dob.replace(year=current_date.year, day=dob.day - 1)
     if bday > current_date:
         age = current_date.year - dob.year - 1
     else:
