@@ -89,7 +89,7 @@ run the ETL as well as the database updates manually. You can do it with the pac
 
 Now you can generate a chart. I.e.:
 
-    $ python generate_chart.py -x time -X yearly -y salary -Y average -d company -D 1,2
+    $ python generate_chart.py -x time -X yearly -y salary -Y median -d company -D 1,2
 
 ## Usage
 
@@ -97,8 +97,8 @@ Now you can generate a chart. I.e.:
       Usage: generate_chart.py [options]
       Script to generate chart using data from target database.
       Examples:
-      generate_chart.py -x time -X yearly -y salary -Y average -d age -D 26-35,36-45
-      generate_chart.py -x time -X 2000,2010 -y salary -Y average -d jobrole -D "Project Manager"
+      generate_chart.py -x time -X yearly -y salary -Y median -d age -D 26-35,36-45
+      generate_chart.py -x time -X 2000,2010 -y salary -Y median -d jobrole -D "Project Manager"
       See generate_chart.py --help for supported options.
       
       Options:
@@ -110,7 +110,7 @@ Now you can generate a chart. I.e.:
                         			2000,2003. Range for time is separated by comma to
                         			allow daily range such as -X 2000-01-01,2003-08-20
         -y Y_AXIS, --y_axis=Y_AXIS              Label for y-axis: salary
-        -Y Y_OUTPUT, --y_output=Y_OUTPUT	Unit for y-axis. salary: average or median
+        -Y Y_OUTPUT, --y_output=Y_OUTPUT	Unit for y-axis. salary: median or total
         -d DATA_TYPE, --data_type=DATA_TYPE	Data type for plotted lines: age, company, gender,
                         			jobrole or manager
         -D DATA_OUTPUT, --data_output=DATA_OUTPUT

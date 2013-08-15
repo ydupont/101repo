@@ -5,7 +5,6 @@ TIME = "time"
 SALARY = "salary"
 
 # Constants for salary value
-AVERAGE = "average"
 MEDIAN = "median"
 TOTAL = "total"
 

@@ -13,7 +13,7 @@ import os
 import re
 import sys
 
-from chart import (TIME, SALARY, AVERAGE, MEDIAN, TOTAL, AGE, COMPANY, GENDER,
+from chart import (TIME, SALARY, MEDIAN, TOTAL, AGE, COMPANY, GENDER,
                    JOBROLE, MANAGER)
 from chart.query import Query, QueryError
 from chart.render import Render
@@ -23,7 +23,7 @@ from utils import read_config, setup_logger, get_next_month, get_next_year
 
 DEFAULT_USAGE_TEXT = ("""Usage: %prog [options]
 Script to generate chart using data from target database.
-Example: %prog -x time -X yearly -y salary -Y average -d age -D 26-35,36-45
+Example: %prog -x time -X yearly -y salary -Y median -d age -D 26-35,36-45
 See %prog --help for supported options.""")
 
 
@@ -152,8 +152,8 @@ def main(argv):
                              help="Label for y-axis: salary")
 
     option_parser.add_option("-Y", "--y_output", type="choice",
-                             choices=[AVERAGE, MEDIAN, TOTAL],
-                             help="Unit for y-axis. salary: average or median")
+                             choices=[MEDIAN, TOTAL],
+                             help="Unit for y-axis. salary: median or total")
 
     option_parser.add_option("-d", "--data_type", type="choice",
                              choices=[AGE, COMPANY, GENDER, JOBROLE, MANAGER],

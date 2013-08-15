@@ -1,6 +1,6 @@
 import logging
 from MySQLdb import ProgrammingError
-from . import AVERAGE, MEDIAN, TOTAL, AGE, COMPANY, GENDER, JOBROLE, MANAGER
+from . import MEDIAN, TOTAL, AGE, COMPANY, GENDER, JOBROLE, MANAGER
 
 
 class QueryError(Exception):
@@ -77,17 +77,10 @@ class Query(object):
     def _get_data_select(self, context):
         """
         Returns a select statement that forms a joinable query given the
-        unit for y-axis, i.e. average, median or total.
+        unit for y-axis, i.e.  median or total.
         """
         query = ""
-        if self.chart['y']['unit'] == AVERAGE:
-            query = (
-                "(SELECT d.date AS line{idx}_date, "
-                "AVG(e.salary) AS line{idx}_value "
-                "FROM {tables} "
-                "WHERE {data_limit} AND {time_limit} "
-                "GROUP BY date ORDER BY date) line{idx} ")
-        elif self.chart['y']['unit'] == MEDIAN:
+        if self.chart['y']['unit'] == MEDIAN:
             query = (
                 "(SELECT date AS line{idx}_date, "
                 "AVG(salary) AS line{idx}_value "
